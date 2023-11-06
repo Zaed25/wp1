@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WP1 Homework</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #eaeaea;
+    text-align: right;
+
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 4fr 6fr 2fr;
+    grid-gap: 10px;
+    padding: 10px;
+    height: 100vh;
+  }
+
+  .guide, .nav-bar, .form-area {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+
+  .nav-bar a {
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-bar a:hover, .nav-bar a.active {
+    background-color: #f7f7f7;
+  }
+
+  .form-section {
+    display: none;
+  }
+
+  .form-section.active {
+    display: block;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .submit-btn, button, input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .submit-btn:hover {
+    background-color: #4cae4c;
+  }
+
+  .Requirements {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px; 
+}
+
+.Requirements h3 {
+  background-color: #555;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  width: 100%; 
+  margin: 0;
+}
+
+.Requirements ul {
+  list-style: none;
+  padding: 0; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  width: 100%; 
+}
+
+.Requirements ul li  {
+  background-color: #efefef;
+  padding: 10px;
+  border-radius: 7px;
+  margin-bottom: 5px; 
+  text-align: center;
+  width: 100%;
+  font-size: smaller;
+  }
+
+  .footer {
+    background-color: #555;
+    grid-column: 1/4;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    
+}
+.footer .container {
+    color: white;
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+}
+.logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.logo img {
+    height: 100%;
+    width: 100%;
+}
+.footer .info {
+    font-size: larger;
+}
+.footer .note {
+    max-width: 30%;
+    text-align: center;
+}
+.footer .note p {
+    line-height: 2rem;
+}
+
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <div class="guide">
+
+    <h2>دليل التقديم</h2>
+    <div class="Requirements">
+            <h3>متطلبات المعلومات الشخصية</h3>
+            <ul>
+                <li>الاسم الأول باللغة العربية: يجب أن يحتوي على حروف عربية فقط وألا يقل عن ثلاثة أحرف</li>
+                <li>اسم العائلة باللغة العربية: يجب أن يحتوي على حروف عربية فقط وألا يقل عن ثلاثة أحرف</li>
+                <li>الاسم الأول باللغة الإنجليزية: يجب أن يبدأ بحرف كبير ويحتوي على حروف إنجليزية فقط</li>
+                <li>اسم العائلة باللغة الإنجليزية: يجب أن يبدأ بحرف كبير ويحتوي على حروف إنجليزية فقط</li>
+                <li>نبذة عن هواياتك: يجب أن تكون بين 50 إلى 500 كلمة</li>
+                <li>تاريخ الميلاد يجب أن يكون بين 1990 و 2100</li>
+            </ul>
+            
+    </div>
+    <div class="Requirements">
+        <h3>متطلبات معلومات التواصل</h3>
+        <ul>
+          <li>الدولة: يجب اختيار دولة من القائمة المنسدلة</li>
+          <li>المدينة: يجب أن يتكون من حروف عربية، ثلاث أحرف على الأقل</li>
+          <li>الرمز البريدي: يجب أن يحتوي على 3 إلى 5 أرقام أو حروف</li>
+          <li>الشارع: أحرف عربية فقط، يجب أن يحتوي على 3 إلى 30 حرفاً</li>
+          <li>رقم الجوال / الموبايل: يجب أن يبدأ بـ '09' يليه 8 أرقام أخرى</li>
+          <li>رقم الهاتف (المنزل): يجب أن يبدأ بـ '011' يليه 7 أرقام أخرى</li>
+        </ul>
+      </div>
+      <div class="Requirements">
+        <h3>متطلبات إضافة لغة</h3>
+        <ul>
+          <li>يجب تحديد اللغة الأم</li>
+          <li>يجب إضافة لغة واحدة على الأقل بالإضافة للغة الأم</li>
+        </ul>
+      </div>
+      <div class="Requirements">
+        <h3>متطلبات تعيين كلمة السر</h3>
+        <ul>
+          <li>يجب تحديد اللغة الأم</li>
+          <li>يجب إضافة لغة واحدة على الأقل بالإضافة للغة الأم</li>
+        </ul>
+      </div>
+  </div>
+  
+  
+  <div class="form-area">
+    <div id="home" class="form-section active">
+        <h1>مرحباً بكم في نظام التقديم</h1>
+        <p>للبدء في تعبئة النموذج، يرجى الضغط على البدء.</p>
+        <button type="button" id="startButton" class="submit-btn">ابدأ</button>
+    </div>
+    <form id="applicationForm">
+      <!-- Personal Information Section -->
+      <div id="personal-info" class="form-section">
+        <h2>المعلومات الشخصية</h2>
+          <label for="firstNameAr">الاسم الأول باللغة العربية</label>
+          <input type="text" id="firstNameAr" name="firstNameAr" pattern="[\u0600-\u06FF]{3,}" title="أحرف عربية فقط، ثلاثة أحرف على الأقل" required>
+      
+          <label for="lastNameAr">الاسم الأخير باللغة العربية</label>
+          <input type="text" id="lastNameAr" name="lastNameAr" pattern="[\u0600-\u06FF]{3,}" title="أحرف عربية فقط، ثلاثة أحرف على الأقل" required>
+      
+          <label for="firstNameEn">الاسم الأول باللغة الانجليزية</label>
+          <input type="text" id="firstNameEn" name="firstNameEn" pattern="[A-Z].*" title="يجب أن يكون الحرف الأول كبيرا" required>
+      
+          <label for="lastNameEn">الاسم الأخير باللغة الانجليزية</label>
+          <input type="text" id="lastNameEn" name="lastNameEn" pattern="[A-Z].*" title="يجب أن يكون الحرف الأول كبيرا" required>
+      
+          <label for="fatherNameAr">اسم الأب الأول باللغة العربية</label>
+          <input type="text" id="fatherNameAr" name="fatherNameAr" pattern="[\u0600-\u06FF]{3,}" title="أحرف عربية فقط، ثلاثة أحرف على الأقل" required>
+      
+          <label for="fatherNameEn">اسم الأب الأول باللغة الانجليزية</label>
+          <input type="text" id="fatherNameEn" name="fatherNameEn" pattern="[A-Z].*" title="يجب أن يكون الحرف الأول كبيرا" required>
+      
+          <label for="motherFullNameAr">اسم الأم الكامل باللغة العربية</label>
+          <input type="text" id="motherFullNameAr" name="motherFullNameAr" pattern="[\u0600-\u06FF]{3,}" title="أحرف عربية فقط، ثلاثة أحرف على الأقل" required>
+      
+          <label for="motherFullNameEn">اسم الأم الكامل باللغة الانجليزية</label>
+          <input type="text" id="motherFullNameEn" name="motherFullNameEn" pattern="[A-Z].*" title="يجب أن يكون الحرف الأول كبيرا" required>
+      
+          <label for="gender">الجنس</label>
+          <select id="gender" name="gender" required>
+            <option value="">-- اختر الجنس --</option>
+            <option value="male">ذكر</option>
+            <option value="female">أنثى</option>
+          </select>
+      
+          <label for="maritalStatus">الحالة الاجتماعية</label>
+          <select id="maritalStatus" name="maritalStatus" required>
+            <option value="">-- اختر الحالة الاجتماعية --</option>
+            <option value="single">عازب</option>
+            <option value="married">متزوج</option>
+            <option value="engaged">خاطب</option>
+            <option value="other">غير ذلك</option>
+          </select>
+      
+          <label for="birthDate">تاريخ الميلاد</label>
+          <input type="date" id="birthDate" name="birthDate" min="1990-01-01" max="2100-12-31" required>
+      
+          <label for="nationality">الجنسية</label>
+          <select id="nationality" name="nationality" required>
+            <option value="">-- اختر الجنسية --</option>
+            <option value="SY">سوريا</option>
+          </select>
+      
+          <label for="hobbies">نبذة عن هواياتك:</label>
+          <textarea name="hobbies" id="hobbies" oninput="wordCountValidator(this)" placeholder="تكلم عن هواياتك (بين 50 - إلى 500 كلمة)" required></textarea>
+          <div id="hobbiesList"></div>
+          <button type="button" id="addHobby">إضافة هواية</button>
+      
+          <input type="submit" value="إرسال">
+      </div>
+      
+      <!-- Contact Information Section -->
+      <div id="contact-info" class="form-section">
+        <h2>معلومات الاتصال</h2>
+          <label for="country">الدولة</label>
+          <select id="country" name="country" required>
+            <option value="">-- اختر الدولة --</option>
+            <option value="SY">سوريا</option>
+            <option value="DZ">الجزائر</option>
+            <option value="BH">البحرين</option>
+            <option value="TD">تشاد</option>
+            <option value="KM">جزر القمر</option>
+            <option value="DJ">جيبوتي</option>
+            <option value="EG">مصر</option>
+            <option value="IQ">العراق</option>
+            <option value="JO">الأردن</option>
+            <option value="KW">الكويت</option>
+            <option value="LB">لبنان</option>
+            <option value="LY">ليبيا</option>
+            <option value="MA">المغرب</option>
+            <option value="MR">موريتانيا</option>
+            <option value="OM">عُمان</option>
+            <option value="PS">فلسطين</option>
+            <option value="QA">قطر</option>
+            <option value="SA">المملكة العربية السعودية</option>
+            <option value="SO">الصومال</option>
+            <option value="SD">السودان</option>
+            <option value="TN">تونس</option>
+            <option value="AE">الإمارات العربية المتحدة</option>
+            <option value="YE">اليمن</option>
+            <!-- Add other Arab countries as needed -->
+          </select>
+      
+          <!-- The cities select box can be dynamically populated based on the country selection -->
+          <label for="city">المدينة</label>
+        <input type="text" id="city" name="city" required>
+      
+          <label for="postalCode">الرمز البريدي</label>
+          <input type="text" id="postalCode" name="postalCode" minlength="3" maxlength="5" pattern="[\u0600-\u06FF]{3,}" title="أحرف عربية فقط، ثلاثة أحرف على الأقل" required>
+      
+          <label for="street" >الشارع</label>
+          <input type="text" id="street" name="street" minlength="3" maxlength="30" pattern="[\u0600-\u06FF]{3,}" title="أحرف عربية فقط، ثلاثة أحرف على الأقل" required>
+      
+          <label for="mobileNumber">رقم الجوال / الموبايل</label>
+          <input type="tel" id="mobileNumber" name="mobileNumber" pattern="09[0-9]{8}" placeholder="09xxxxxxxx" title="رقم الجوال يجب أن يبدأ بـ 09 ويتكون من 8 أرقام إضافية" required>
+      
+          <label for="phoneNumber">رقم الهاتف (المنزل)</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" pattern="011[0-9]{7}" placeholder="011xxxxxxx" title="رقم الهاتف يجب أن يبدأ بـ 011 ويتكون من 7 أرقام إضافية" required>
+      
+          <input type="submit" value="إرسال">
+      </div>
+
+      <div id="languages" class="form-section">
+        <h2>اللغات</h2>
+        <label for="motherTongue">اللغة الأم</label>
+        <select id="motherTongue" name="motherTongue" required>
+          <!-- Populate with options for all world languages -->
+          <option value="arabic">العربية</option>
+          <!-- Add more languages here -->
+        </select>
+      
+        <div id="otherLanguages">
+          <label>اللغات الأخرى</label>
+          <!-- Other languages entries will go here -->
+        </div>
+        <button type="button" id="addLanguage">إضافة لغة أخرى</button>
+      
+        <input type="submit" value="إرسال">
+      </div>
+
+      <div id="password-selection" class="form-section">
+        <h2>اختيار كلمة السر</h2>
+        
+        <label for="password">كلمة السر:</label>
+        <input type="password" id="password" name="password"
+               pattern="(?=.*[A-Z]).{5,10}"
+               title="كلمة السر يجب أن تكون من 5 إلى 10 محارف وأن تحتوي على حرف كبير واحد على الأقل"
+               required>
+        
+        <label for="confirmPassword">تأكيد كلمة السر:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        
+        <input type="submit" value="إرسال" class="submit-btn">
+      </div>
+
+    </form>
+  </div>
+  
+  <div class="nav-bar">
+    <a href="#" data-section="home" class="active">الصفحة الرئيسية</a>
+    <a href="#" data-section="personal-info">المعلومات الشخصية</a>
+    <a href="#" data-section="contact-info">معلومات الاتصال</a>
+    <a href="#" data-section="languages">اللغات</a>
+    <a href="#" data-section="password-selection">اختيار كلمة السر</a>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+        <div class="logo">
+            <img src="0.jfif">
+        </div>
+        <div class="note">
+            <p>عملية تأكيد كلمة السر هي الشيء الوحيد الذي لا يعمل بعد التجربة، رغم أن التعبير المنتظم يعمل، لكن عملية التحقق من كلمة السر المُعاد كتابتها لا بتم تشغيلها أو استدعائها من كود الجافا سيكربت لسبب ما </p>
+        </div>
+        <div class="info">
+            <p>وظيفة برمجة ويب 1 اختيارية</p>
+            <p>محمد زيد النحاس</p>
+            <p>المشرف: الدكتور باسل الخطيب</p>
+            <p>mhd_zaid_211096</p>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+///////////التنقل بين أقسام نظام التقديم
+function showSection(sectionId) {
+    document.querySelectorAll('.form-section').forEach(function(section) {
+      section.classList.remove('active');
+    });
+    var section = document.getElementById(sectionId);
+    if (section) {
+      section.classList.add('active');
+    }
+    document.querySelectorAll('.nav-bar a').forEach(function(navLink) {
+      navLink.classList.toggle('active', navLink.getAttribute('data-section') === sectionId);
+    });
+  }
+  document.getElementById('startButton').addEventListener('click', function() {
+    showSection('personal-info');
+  });
+  document.querySelectorAll('.nav-bar a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      showSection(this.getAttribute('data-section'));
+    });
+  });
+/////////////////
+
+
+
+
+////////////////////////////////////
+    // personal information
+    document.getElementById('addHobby').addEventListener('click', function() {
+    var hobbiesList = document.getElementById('hobbiesList');
+    var newHobby = document.createElement('input');
+    newHobby.setAttribute('type', 'text');
+    newHobby.setAttribute('name', 'hobbies[]');
+    newHobby.setAttribute('placeholder', 'أدخل هوايتك');
+    hobbiesList.appendChild(newHobby);
+
+  });
+  function wordCountValidator(textarea) {
+  var wordCount = textarea.value.trim().split(/\s+/).length; // Split by any whitespace and count
+  var wordLimit = 500;
+
+  // If there's no text, or the text is less than 50 words, or more than 500 words, show an error
+  if (textarea.value.length === 0 || wordCount < 50 || wordCount > wordLimit) {
+    textarea.setCustomValidity('أدخل رجاء بين 50 إلى 500 كلمة');
+  } else {
+    // Otherwise, remove the error
+    textarea.setCustomValidity('');
+  }
+}
+  /////////////////////////////////
+
+
+
+
+  document.getElementById('applicationForm').addEventListener('submit', function(event) {
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+
+    // Check if both passwords match
+    if (password !== confirmPassword) {
+      alert('كلمتا السر غير متطابقتين.');
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+// Languages section
+ // Add one additional language entry by default
+ addLanguageEntry();
+
+document.getElementById('addLanguage').addEventListener('click', function() {
+  addLanguageEntry();
+});
+
+function addLanguageEntry() {
+  var container = document.getElementById('otherLanguages');
+
+  var languageDiv = document.createElement('div');
+  languageDiv.classList.add('language-entry');
+
+  // Language select
+  var languageSelect = document.createElement('select');
+  languageSelect.name = 'additionalLanguages[]';
+  var languages = ['English', 'Spanish', 'French', 'German', 'Chinese']; // Example languages
+  languages.forEach(function(language) {
+    var option = document.createElement('option');
+    option.value = language.toLowerCase();
+    option.textContent = language;
+    languageSelect.appendChild(option);
+  });
+  languageDiv.appendChild(languageSelect);
+
+  // Proficiency select
+  var proficiencySelect = document.createElement('select');
+  proficiencySelect.name = 'languageProficiency[]';
+  var proficiencyLevels = ['Basic', 'Intermediate', 'Advanced', 'Native'];
+  proficiencyLevels.forEach(function(level) {
+    var option = document.createElement('option');
+    option.value = level.toLowerCase();
+    option.textContent = level;
+    proficiencySelect.appendChild(option);
+  });
+  languageDiv.appendChild(proficiencySelect);
+
+  // Remove button
+  var removeButton = document.createElement('button');
+  removeButton.textContent = 'إزالة';
+  removeButton.type = 'button';
+  removeButton.onclick = function() {
+    // Ensure there's always at least one additional language entry
+    if (container.querySelectorAll('.language-entry').length > 1) {
+      languageDiv.remove();
+    } else {
+      alert('يجب إضافة لغة واحدة على الأقل.');
+    }
+  };
+  languageDiv.appendChild(removeButton);
+
+  container.appendChild(languageDiv);
+}
+
+document.getElementById('applicationForm').addEventListener('submit', function(event) {
+  // Check if at least one additional language has been added
+  var additionalLanguages = document.querySelectorAll('select[name="additionalLanguages[]"]');
+  if (additionalLanguages.length === 0 || additionalLanguages[0].value === '') {
+    event.preventDefault(); // Prevent form submission
+    alert('يجب إضافة لغة واحدة على الأقل.');
+  }
+});
+
+
+
+/////////////////////////////
+
+
+
+
+
+
+
+
+
+//////////////////////
+
+////////////////////// contact section///////////////
+// Initial setup for mobile number and phone number
+  var mobileNumberInput = document.getElementById('mobileNumber');
+  mobileNumberInput.addEventListener('input', function() {
+    var start = this.value.slice(0, 2);
+    if (start !== '09') {
+      this.value = '09' + this.value.slice(2);
+    }
+  });
+  var phoneNumberInput = document.getElementById('phoneNumber');
+  phoneNumberInput.addEventListener('input', function() {
+    var start = this.value.slice(0, 3);
+    if (start !== '011') {
+      this.value = '011' + this.value.slice(3);
+    }
+  });
+  document.getElementById('contactInfoForm').addEventListener('submit', function(event) {
+    // You can add more specific validation if needed
+    var inputs = this.querySelectorAll('input');
+    var valid = true;
+    inputs.forEach(function(input) {
+      if (!input.value.trim()) {
+        valid = false;
+        input.style.borderColor = 'red'; // Highlight the empty field
+      } else {
+        input.style.borderColor = ''; // Reset the field highlight
+      }
+    });
+    
+    if (!valid) {
+      event.preventDefault(); // Prevent form submission if any field is empty
+      alert('يرجى ملء جميع الحقول.');
+    }
+  });
+////////////////////////////////////////////
+
+
+
+////////////////////////////////
+
+
+/////////////////////////////
+
+////////////////////////
+
+ 
+
+ 
+
+////////////////////////////////
+  
+   
+
+
+
+  // Initially set the home section as active
+  showSection('home');
+
+});
+</script>
+
+</body>
+</html>
